@@ -140,6 +140,21 @@
   </main>
 
   <script>
+    const galleries = {
+
+  Curtains: [
+    "gallery/blackout curtains/blackout-curtains-Dubai Marina.jpg"
+  ],
+
+  Blinds: [
+    "gallery/roller blinds/roller blinds beige.jpeg"
+  ],
+
+  Sheers: [
+    "gallery/motorized blinds/sheer-curtains-in-Dubai.jpg"
+  ]
+
+};
     function showImage(event) {
       const image = document.getElementById("previewImage");
       image.src = URL.createObjectURL(event.target.files[0]);
@@ -156,10 +171,22 @@
   const galleryImage =
     document.getElementById("galleryImage");
 
-  if(category === "Curtains") {
+  function openGallery(category) {
+
+  const galleryImage =
+    document.getElementById("galleryImage");
+
+  if (galleries[category]) {
+
     galleryImage.src =
-      "gallery/blackout curtains/blackout-curtains-Dubai Marina3.jpg";
+      galleries[category][0];
+
+    galleryImage.style.display = "block";
+
+    document.getElementById("galleryStatus").innerText =
+      "Showing: " + category;
   }
+}
 
   galleryImage.style.display = "block";
 
