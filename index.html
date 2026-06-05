@@ -132,6 +132,9 @@
       <div class="status" id="galleryStatus">
         Choose a gallery category.
       </div>
+      <img id="galleryImage"
+     src=""
+     style="width:100%; margin-top:15px; border-radius:12px; display:none;">
     </section>
 
   </main>
@@ -149,8 +152,20 @@
     }
 
     function openGallery(category) {
-      document.getElementById("galleryStatus").innerText =
-        "Opening gallery: " + category;
+
+  const galleryImage =
+    document.getElementById("galleryImage");
+
+  if(category === "Curtains") {
+    galleryImage.src =
+      "gallery/blackout curtains/blackout-curtains-Dubai Marina3.jpg";
+  }
+
+  galleryImage.style.display = "block";
+
+  document.getElementById("galleryStatus").innerText =
+    "Showing: " + category;
+}
     }
   </script>
 
