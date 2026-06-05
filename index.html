@@ -60,7 +60,7 @@
       margin: 7px 0;
       border: none;
       border-radius: 14px;
-      background: #8b6f4e;
+      background: linear-gradient(135deg, #4a3428, #8b6f4e);
       color: white;
       font-size: 16px;
       cursor: pointer;
@@ -91,11 +91,14 @@
 
   <header>
     <h1>Alef Noon Visualizer</h1>
-    <p>Curtain preview and project gallery</p>
+    <p>Client window preview and organized project gallery</p>
   </header>
 
   <main>
-
+<section class="card">
+  <h2>Welcome</h2>
+  <p>Select a client window photo, choose a curtain or blind type, and browse Alef Noon project examples.</p>
+</section>
     <section class="card">
       <h2>Customer Window Photo</h2>
       <p>Upload a photo from client’s home.</p>
@@ -123,11 +126,14 @@
     <section class="card">
       <h2>Project Gallery</h2>
 
-      <button onclick="openGallery('Curtains')">Curtains</button>
-      <button onclick="openGallery('Sheers')">Sheers</button>
-      <button onclick="openGallery('Blinds')">Blinds</button>
-      <button onclick="openGallery('Motorized')">Motorized</button>
-      <button onclick="openGallery('Before / After')">Before / After</button>
+      <button onclick="openGallery('blackout curtains')">blackout curtains</button>
+      <button onclick="openGallery('sheers')">sheers</button>
+      <button onclick="openGallery('roman blinds')">roman blinds</button>
+      <button onclick="openGallery('roller blinds')">roller blinds</button>
+      <button onclick="openGallery('venetian blinds')">venetian blinds</button>
+      <button onclick="openGallery('vertical blinds')">vertical blinds</button>
+      <button onclick="openGallery('motorized curtains')">motorized curtains</button>
+      <button onclick="openGallery('motorized blinds')">motorized blinds</button>
 
       <div class="status" id="galleryStatus">
         Choose a gallery category.
