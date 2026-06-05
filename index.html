@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alef Noon Visualizer</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f6f1ea;
+      color: #2b2b2b;
+    }
+
+    header {
+      background: #3b2f24;
+      color: white;
+      padding: 22px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    header p {
+      margin: 8px 0 0;
+      opacity: 0.85;
+    }
+
+    main {
+      padding: 18px;
+      max-width: 520px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 21px;
+    }
+
+    input {
+      width: 100%;
+      margin: 12px 0;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      margin: 7px 0;
+      border: none;
+      border-radius: 14px;
+      background: #8b6f4e;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #6f563b;
+    }
+
+    #previewImage {
+      width: 100%;
+      border-radius: 16px;
+      margin-top: 12px;
+      display: none;
+    }
+
+    .status {
+      background: #efe5d8;
+      padding: 12px;
+      border-radius: 14px;
+      margin-top: 12px;
+      font-size: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Alef Noon Visualizer</h1>
+    <p>Curtain preview and project gallery</p>
+  </header>
+
+  <main>
+
+    <section class="card">
+      <h2>Customer Window Photo</h2>
+      <p>Upload a photo from client’s home.</p>
+
+      <input type="file" accept="image/*" onchange="showImage(event)" />
+
+      <img id="previewImage" />
+
+      <div class="status" id="selectedStyle">
+        No curtain style selected yet.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Choose Curtain Type</h2>
+
+      <button onclick="selectStyle('Blackout Curtains')">Blackout Curtains</button>
+      <button onclick="selectStyle('Blackout + Sheer Curtains')">Blackout + Sheer</button>
+      <button onclick="selectStyle('Roller Blinds')">Roller Blinds</button>
+      <button onclick="selectStyle('Roman Blinds')">Roman Blinds</button>
+      <button onclick="selectStyle('Vertical Blinds')">Vertical Blinds</button>
+      <button onclick="selectStyle('Wooden Blinds')">Wooden Blinds</button>
+    </section>
+
+    <section class="card">
+      <h2>Project Gallery</h2>
+
+      <button onclick="openGallery('Curtains')">Curtains</button>
+      <button onclick="openGallery('Sheers')">Sheers</button>
+      <button onclick="openGallery('Blinds')">Blinds</button>
+      <button onclick="openGallery('Motorized')">Motorized</button>
+      <button onclick="openGallery('Before / After')">Before / After</button>
+
+      <div class="status" id="galleryStatus">
+        Choose a gallery category.
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    function showImage(event) {
+      const image = document.getElementById("previewImage");
+      image.src = URL.createObjectURL(event.target.files[0]);
+      image.style.display = "block";
+    }
+
+    function selectStyle(styleName) {
+      document.getElementById("selectedStyle").innerText =
+        "Selected style: " + styleName;
+    }
+
+    function openGallery(category) {
+      document.getElementById("galleryStatus").innerText =
+        "Opening gallery: " + category;
+    }
+  </script>
+
+</body>
+</html>
