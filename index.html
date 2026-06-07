@@ -202,7 +202,19 @@
     </section>
 
   </main>
-function updateOverlayPosition() {
+
+  <script>
+    const overlays = {
+  "blackout-curtains":
+    "gallery/overlays/blackout-overlay.png",
+
+  "roller-blinds":
+    "gallery/overlays/roller-overlay.png"
+};
+  let overlayX = 20;
+let overlayY = 20;
+let overlaySize = 70;
+    function updateOverlayPosition() {
   const overlay = document.getElementById("curtainOverlay");
 
   overlay.style.left = overlayX + "px";
@@ -225,17 +237,6 @@ function resizeOverlay(action) {
 
   updateOverlayPosition();
 }
-  <script>
-    const overlays = {
-  "blackout-curtains":
-    "gallery/overlays/blackout-overlay.png",
-
-  "roller-blinds":
-    "gallery/overlays/roller-overlay.png"
-};
-  let overlayX = 20;
-let overlayY = 20;
-let overlaySize = 70;
     const galleries = {
     "blackout-curtains": [
       "gallery/blackout-curtains/blackout-curtains-Dubai-Marina.jpg"
