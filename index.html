@@ -76,7 +76,26 @@
       margin-top: 12px;
       display: none;
     }
+.preview-box {
+  position: relative;
+  width: 100%;
+}
 
+#previewImage {
+  width: 100%;
+  border-radius: 16px;
+  margin-top: 12px;
+  display: none;
+}
+
+#curtainOverlay {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 70%;
+  display: none;
+  pointer-events: none;
+}
     .status {
       background: #efe5d8;
       padding: 12px;
@@ -120,8 +139,10 @@
 
       <input type="file" accept="image/*" onchange="showImage(event)" />
 
-      <img id="previewImage" />
-
+     <div class="preview-box">
+  <img id="previewImage" />
+  <img id="curtainOverlay" />
+</div>
       <div class="status" id="selectedStyle">
         No curtain style selected yet.
       </div>
@@ -191,8 +212,16 @@
   }
 
   function selectStyle(styleName) {
-    document.getElementById("selectedStyle").innerText =
-      "Selected style: " + styleName;
+  document.getElementById("selectedStyle").innerText =
+    "Selected style: " + styleName;
+
+  const overlay = document.getElementById("curtainOverlay");
+
+  if (styleName === "Blackout-Curtains") {
+    overlay.src = "gallery/overlays/blackout-overlay.png";
+    overlay.style.display = "block";
+  }
+
   }
 
   function openGallery(category) {
