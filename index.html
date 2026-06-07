@@ -202,7 +202,29 @@
     </section>
 
   </main>
+function updateOverlayPosition() {
+  const overlay = document.getElementById("curtainOverlay");
 
+  overlay.style.left = overlayX + "px";
+  overlay.style.top = overlayY + "px";
+  overlay.style.width = overlaySize + "%";
+}
+
+function moveOverlay(direction) {
+  if (direction === "left") overlayX -= 10;
+  if (direction === "right") overlayX += 10;
+  if (direction === "up") overlayY -= 10;
+  if (direction === "down") overlayY += 10;
+
+  updateOverlayPosition();
+}
+
+function resizeOverlay(action) {
+  if (action === "bigger") overlaySize += 5;
+  if (action === "smaller") overlaySize -= 5;
+
+  updateOverlayPosition();
+}
   <script>
     const overlays = {
   "blackout-curtains":
@@ -262,29 +284,7 @@ let overlaySize = 70;
       galleryStatus.innerText = "No image added yet for: " + category;
     }
   }
-    function updateOverlayPosition() {
-  const overlay = document.getElementById("curtainOverlay");
 
-  overlay.style.left = overlayX + "px";
-  overlay.style.top = overlayY + "px";
-  overlay.style.width = overlaySize + "%";
-}
-
-function moveOverlay(direction) {
-  if (direction === "left") overlayX -= 10;
-  if (direction === "right") overlayX += 10;
-  if (direction === "up") overlayY -= 10;
-  if (direction === "down") overlayY += 10;
-
-  updateOverlayPosition();
-}
-
-function resizeOverlay(action) {
-  if (action === "bigger") overlaySize += 5;
-  if (action === "smaller") overlaySize -= 5;
-
-  updateOverlayPosition();
-}
   </script>
 
 </body>
