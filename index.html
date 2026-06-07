@@ -69,7 +69,17 @@
     button:hover {
       background: #6f563b;
     }
+.control-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 12px;
+}
 
+.control-grid button {
+  font-size: 14px;
+  padding: 12px;
+}
     #previewImage {
       width: 100%;
       border-radius: 16px;
@@ -158,6 +168,16 @@
       <button onclick="selectStyle('Roman-Blinds')">Roman-Blinds</button>
       <button onclick="selectStyle('Vertical-Blinds')">Vertical-Blinds</button>
       <button onclick="selectStyle('Wooden-Blinds')">Wooden-Blinds</button>
+      <h3>Adjust Preview</h3>
+
+<div class="control-grid">
+  <button onclick="moveOverlay('up')">⬆️ Up</button>
+  <button onclick="moveOverlay('down')">⬇️ Down</button>
+  <button onclick="moveOverlay('left')">⬅️ Left</button>
+  <button onclick="moveOverlay('right')">➡️ Right</button>
+  <button onclick="resizeOverlay('bigger')">➕ Bigger</button>
+  <button onclick="resizeOverlay('smaller')">➖ Smaller</button>
+</div>
     </section>
 
     <section class="card">
@@ -191,7 +211,10 @@
   "roller-blinds":
     "gallery/overlays/roller-overlay.png"
 };
-  const galleries = {
+  let overlayX = 20;
+let overlayY = 20;
+let overlaySize = 70;
+    const galleries = {
     "blackout-curtains": [
       "gallery/blackout-curtains/blackout-curtains-Dubai-Marina.jpg"
     ],
@@ -203,6 +226,7 @@
     "motorized-blinds": [
       "gallery/motorized-blinds/motorized-blinds-Dubai.jpg"
     ]
+    
   };
 
   function showImage(event) {
@@ -220,6 +244,7 @@
   if (styleName === "Blackout-Curtains") {
     overlay.src = "gallery/overlays/blackout-overlay.png";
     overlay.style.display = "block";
+    updateOverlayPosition();
   }
 
   }
@@ -237,6 +262,29 @@
       galleryStatus.innerText = "No image added yet for: " + category;
     }
   }
+    function updateOverlayPosition() {
+  const overlay = document.getElementById("curtainOverlay");
+
+  overlay.style.left = overlayX + "px";
+  overlay.style.top = overlayY + "px";
+  overlay.style.width = overlaySize + "%";
+}
+
+function moveOverlay(direction) {
+  if (direction === "left") overlayX -= 10;
+  if (direction === "right") overlayX += 10;
+  if (direction === "up") overlayY -= 10;
+  if (direction === "down") overlayY += 10;
+
+  updateOverlayPosition();
+}
+
+function resizeOverlay(action) {
+  if (action === "bigger") overlaySize += 5;
+  if (action === "smaller") overlaySize -= 5;
+
+  updateOverlayPosition();
+}
   </script>
 
 </body>
