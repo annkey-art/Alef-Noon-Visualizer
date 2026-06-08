@@ -86,10 +86,13 @@
       margin-top: 12px;
       display: none;
     }
-.preview-box {
+  .preview-box {
   position: relative;
   width: 100%;
+  overflow: hidden;
+  border-radius: 16px;
 }
+    
 
 #previewImage {
   width: 100%;
@@ -102,7 +105,7 @@
   position: absolute;
   top: 20px;
   left: 20px;
-  width: 70%;
+  width: 45%;
   display: none;
   pointer-events: none;
 }
@@ -214,7 +217,7 @@
 };
   let overlayX = 20;
 let overlayY = 20;
-let overlaySize = 70;
+let overlaySize = 45;
     function updateOverlayPosition() {
   const overlay = document.getElementById("curtainOverlay");
 
