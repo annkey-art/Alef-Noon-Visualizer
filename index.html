@@ -281,13 +281,12 @@ function resizeOverlay(action) {
 
   const overlay = document.getElementById("curtainOverlay");
 
-  if (styleName === "Blackout-Curtains") {
-    overlay.src = "gallery/overlays/blackout-overlay.png";
+  if (overlays[styleName]) {
+    overlay.src = overlays[styleName];
     overlay.style.display = "block";
     updateOverlayPosition();
   }
-
-  }
+}
 
   function openGallery(category) {
     const galleryImage = document.getElementById("galleryImage");
