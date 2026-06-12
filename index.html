@@ -273,19 +273,20 @@ function resizeOverlay(action) {
   updateOverlayPosition();
 }
     const galleries = {
-    "blackout-curtains": [
-  "gallery/blackout-curtains/blackout-curtains-Dubai-Marina.jpg",
-  "gallery/blackout-curtains/pelmet-curtains.webp",
-  "gallery/blackout-curtains/pinch-pleat-curtains.webp"
-]
+    const galleries = {
+  "blackout-curtains": [
+    "gallery/blackout-curtains/blackout-curtains-Dubai-Marina.jpg",
+    "gallery/blackout-curtains/pelmet-curtains.webp",
+    "gallery/blackout-curtains/pinch-pleat-curtains.webp"
+  ],
 
-    "roller-blinds": [
-      "gallery/roller-blinds/roller-blinds-Dubai9.jpg"
-    ],
+  "roller-blinds": [
+    "gallery/roller-blinds/roller-blinds-Dubai9.jpg"
+  ],
 
-    "motorized-blinds": [
-      "gallery/motorized-blinds/motorized-blinds-Dubai.jpg"
-    ]
+  "motorized-blinds": [
+    "gallery/motorized-blinds/motorized-blinds-Dubai.jpg"
+  ]
     
   };
 
@@ -308,47 +309,41 @@ function resizeOverlay(action) {
   }
 }
 
+let currentGallery = [];
+let currentGalleryIndex = 0;
+
 function openGallery(category) {
   const galleryImage = document.getElementById("galleryImage");
   const galleryStatus = document.getElementById("galleryStatus");
 
-  if (galleries[category]) {
-    currentGallery = galleries[category];
-    currentGalleryIndex = 0;
+  currentGallery = galleries[category] || [];
+  currentGalleryIndex = 0;
 
-    galleryImage.src = currentGallery[currentGalleryIndex];
-    galleryImage.style.display = "block";
-    galleryStatus.innerText = "Showing: " + category;
-  } else {
+  if (currentGallery.length === 0) {
     galleryImage.style.display = "none";
     galleryStatus.innerText = "No image added yet for: " + category;
-  } 
-}
-    function nextImage();) {
-  if (currentGallery.length === 0) return;
-      alert(currentGalleryIndex
-
-  currentGalleryIndex++;
-
-  if (currentGalleryIndex >= currentGallery.length) {
-    currentGalleryIndex = 0;
+    return;
   }
 
-  document.getElementById("galleryImage").src =
-    currentGallery[currentGalleryIndex];
+  galleryImage.src = currentGallery[0];
+  galleryImage.style.display = "block";
+  galleryStatus.innerText = "Showing: " + category;
+}
+
+function nextImage() {
+  if (currentGallery.length < 2) return;
+
+  currentGalleryIndex = (currentGalleryIndex + 1) % currentGallery.length;
+  document.getElementById("galleryImage").src = currentGallery[currentGalleryIndex];
 }
 
 function previousImage() {
-  if (currentGallery.length === 0) return;
+  if (currentGallery.length < 2) return;
 
-  currentGalleryIndex--;
+  currentGalleryIndex =
+    (currentGalleryIndex - 1 + currentGallery.length) % currentGallery.length;
 
-  if (currentGalleryIndex < 0) {
-    currentGalleryIndex = currentGallery.length - 1;
-  }
-
-  document.getElementById("galleryImage").src =
-    currentGallery[currentGalleryIndex];
+  document.getElementById("galleryImage").src = currentGallery[currentGalleryIndex];
 }
 
   </script>
