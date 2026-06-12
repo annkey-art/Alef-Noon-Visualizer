@@ -204,11 +204,18 @@
       <button onclick="openGallery('motorized-blinds')">motorized-blinds</button>
 
       <div class="status" id="galleryStatus">
-        Choose a gallery category.
-      </div>
-      <img id="galleryImage"
+  Choose a gallery category.
+</div>
+
+<img id="galleryImage"
      src=""
      style="width:100%; margin-top:15px; border-radius:12px; display:none;">
+
+<div class="control-grid">
+  <button onclick="previousImage()">⬅️ Previous</button>
+  <button onclick="nextImage()">➡️ Next</button>
+</div>
+     
     </section>
 
   </main>
@@ -239,6 +246,9 @@ const overlays = {
   let overlayX = 20;
 let overlayY = 20;
 let overlaySize = 45;
+let currentGallery = [];
+let currentGalleryIndex = 0;
+    
     function updateOverlayPosition() {
   const overlay = document.getElementById("curtainOverlay");
 
@@ -296,19 +306,48 @@ function resizeOverlay(action) {
   }
 }
 
-  function openGallery(category) {
-    const galleryImage = document.getElementById("galleryImage");
-    const galleryStatus = document.getElementById("galleryStatus");
+function openGallery(category) {
+  const galleryImage = document.getElementById("galleryImage");
+  const galleryStatus = document.getElementById("galleryStatus");
 
-    if (galleries[category]) {
-      galleryImage.src = galleries[category][0];
-      galleryImage.style.display = "block";
-      galleryStatus.innerText = "Showing: " + category;
-    } else {
-      galleryImage.style.display = "none";
-      galleryStatus.innerText = "No image added yet for: " + category;
-    }
+  if (galleries[category]) {
+    currentGallery = galleries[category];
+    currentGalleryIndex = 0;
+
+    galleryImage.src = currentGallery[currentGalleryIndex];
+    galleryImage.style.display = "block";
+    galleryStatus.innerText = "Showing: " + category;
+  } else {
+    galleryImage.style.display = "none";
+    galleryStatus.innerText = "No image added yet for: " + category;
+  } 
+}
+    function nextImage() {
+  if (currentGallery.length === 0) return;
+
+  currentGalleryIndex++;
+
+  if (currentGalleryIndex >= currentGallery.length) {
+    currentGalleryIndex = 0;
   }
+
+  document.getElementById("galleryImage").src =
+    currentGallery[currentGalleryIndex];
+}
+
+function previousImage() {
+  if (currentGallery.length === 0) return;
+
+  currentGalleryIndex--;
+
+  if (currentGalleryIndex < 0) {
+    currentGalleryIndex = currentGallery.length - 1;
+  }
+
+  document.getElementById("galleryImage").src =
+    currentGallery[currentGalleryIndex];
+  }
+}
 
   </script>
 
