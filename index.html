@@ -272,7 +272,7 @@ function resizeOverlay(action) {
 
   updateOverlayPosition();
 }
-    const galleries = {
+
     const galleries = {
   "blackout-curtains": [
     "gallery/blackout-curtains/blackout-curtains-Dubai-Marina.jpg",
@@ -287,27 +287,7 @@ function resizeOverlay(action) {
   "motorized-blinds": [
     "gallery/motorized-blinds/motorized-blinds-Dubai.jpg"
   ]
-    
-  };
-
-  function showImage(event) {
-    const image = document.getElementById("previewImage");
-    image.src = URL.createObjectURL(event.target.files[0]);
-    image.style.display = "block";
-  }
-
-  function selectStyle(styleName) {
-  document.getElementById("selectedStyle").innerText =
-    "Selected style: " + styleName;
-
-  const overlay = document.getElementById("curtainOverlay");
-
-  if (overlays[styleName]) {
-    overlay.src = overlays[styleName];
-    overlay.style.display = "block";
-    updateOverlayPosition();
-  }
-}
+};
 
 let currentGallery = [];
 let currentGalleryIndex = 0;
@@ -316,10 +296,10 @@ function openGallery(category) {
   const galleryImage = document.getElementById("galleryImage");
   const galleryStatus = document.getElementById("galleryStatus");
 
-  currentGallery = galleries[category];
+  currentGallery = galleries[category] || [];
   currentGalleryIndex = 0;
 
-  if (currentGallery.length = 0) {
+  if (currentGallery.length === 0) {
     galleryImage.style.display = "none";
     galleryStatus.innerText = "No image added yet for: " + category;
     return;
@@ -330,9 +310,6 @@ function openGallery(category) {
   galleryStatus.innerText =
     "Showing: " + category + " 1 / " + currentGallery.length;
 }
-
-function nextImage() {
-  if (currentGallery.length < 2) return;
 
   currentGalleryIndex = (currentGalleryIndex + 1) % currentGallery.length;
 
