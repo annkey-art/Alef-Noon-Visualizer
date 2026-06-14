@@ -316,10 +316,10 @@ function openGallery(category) {
   const galleryImage = document.getElementById("galleryImage");
   const galleryStatus = document.getElementById("galleryStatus");
 
-  currentGallery = galleries[category] || [];
+  currentGallery = galleries[category];
   currentGalleryIndex = 0;
 
-  if (currentGallery.length === 0) {
+  if (currentGallery.length = 0) {
     galleryImage.style.display = "none";
     galleryStatus.innerText = "No image added yet for: " + category;
     return;
