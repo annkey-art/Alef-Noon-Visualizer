@@ -325,16 +325,19 @@ function openGallery(category) {
     return;
   }
 
-  galleryImage.src = currentGallery[0];
+  galleryImage.src = currentGallery[currentGalleryIndex];
   galleryImage.style.display = "block";
-  galleryStatus.innerText = "Showing: " + category;
+  galleryStatus.innerText =
+    "Showing: " + category + " 1 / " + currentGallery.length;
 }
 
 function nextImage() {
   if (currentGallery.length < 2) return;
 
   currentGalleryIndex = (currentGalleryIndex + 1) % currentGallery.length;
-  document.getElementById("galleryImage").src = currentGallery[currentGalleryIndex];
+
+  document.getElementById("galleryImage").src =
+    currentGallery[currentGalleryIndex];
 }
 
 function previousImage() {
@@ -343,7 +346,8 @@ function previousImage() {
   currentGalleryIndex =
     (currentGalleryIndex - 1 + currentGallery.length) % currentGallery.length;
 
-  document.getElementById("galleryImage").src = currentGallery[currentGalleryIndex];
+  document.getElementById("galleryImage").src =
+    currentGallery[currentGalleryIndex];
 }
 
   </script>
