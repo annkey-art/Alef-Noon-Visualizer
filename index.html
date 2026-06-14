@@ -220,38 +220,46 @@
 
   </main>
 
-  <script>
+<script>
 const overlays = {
-  "blackout-curtains":
-    "gallery/overlays/blackout-overlay.png",
-
-  "blackout-curtains-cream":
-    "gallery/overlays/blackout-overlays-cream.png",
-
-  "sheer-curtains":
-    "gallery/overlays/sheer-overlays.png",
-
-  "roller-blinds":
-    "gallery/overlays/roller-overlay.png",
-    
-  "roman-blinds":
-    "gallery/overlays/roman-blind-overlay.png",
-  
-  "vertical-blinds":
-    "gallery/overlays/vertical-overlay.png",
-  
-  "wooden-blinds":
-    "gallery/overlays/venetian-overlays.png"
+  "blackout-curtains": "gallery/overlays/blackout-overlay.png",
+  "blackout-curtains-cream": "gallery/overlays/blackout-overlays-cream.png",
+  "sheer-curtains": "gallery/overlays/sheer-overlays.png",
+  "roller-blinds": "gallery/overlays/roller-overlay.png",
+  "roman-blinds": "gallery/overlays/roman-blind-overlay.png",
+  "vertical-blinds": "gallery/overlays/vertical-overlay.png",
+  "wooden-blinds": "gallery/overlays/venetian-overlays.png"
 };
-  let overlayX = 20;
+
+const galleries = {
+  "blackout-curtains": [
+    "gallery/blackout-curtains/blackout-curtains-Dubai-Marina.jpg",
+    "gallery/blackout-curtains/pelmet-curtains.webp",
+    "gallery/blackout-curtains/pinch-pleat-curtains.webp"
+  ],
+  "roller-blinds": [
+    "gallery/roller-blinds/roller-blinds-Dubai9.jpg"
+  ],
+  "motorized-blinds": [
+    "gallery/motorized-blinds/motorized-blinds-Dubai.jpg"
+  ]
+};
+
+let overlayX = 20;
 let overlayY = 20;
 let overlaySize = 45;
+
 let currentGallery = [];
 let currentGalleryIndex = 0;
-    
-    function updateOverlayPosition() {
-  const overlay = document.getElementById("curtainOverlay");
 
+function showImage(event) {
+  const image = document.getElementById("previewImage");
+  image.src = URL.createObjectURL(event.target.files[0]);
+  image.style.display = "block";
+}
+
+function updateOverlayPosition() {
+  const overlay = document.getElementById("curtainOverlay");
   overlay.style.left = overlayX + "px";
   overlay.style.top = overlayY + "px";
   overlay.style.width = overlaySize + "%";
@@ -262,35 +270,27 @@ function moveOverlay(direction) {
   if (direction === "right") overlayX += 10;
   if (direction === "up") overlayY -= 10;
   if (direction === "down") overlayY += 10;
-
   updateOverlayPosition();
 }
 
 function resizeOverlay(action) {
   if (action === "bigger") overlaySize += 5;
   if (action === "smaller") overlaySize -= 5;
-
   updateOverlayPosition();
 }
 
-    const galleries = {
-  "blackout-curtains": [
-    "gallery/blackout-curtains/blackout-curtains-Dubai-Marina.jpg",
-    "gallery/blackout-curtains/pelmet-curtains.webp",
-    "gallery/blackout-curtains/pinch-pleat-curtains.webp"
-  ],
+function selectStyle(styleName) {
+  document.getElementById("selectedStyle").innerText =
+    "Selected style: " + styleName;
 
-  "roller-blinds": [
-    "gallery/roller-blinds/roller-blinds-Dubai9.jpg"
-  ],
+  const overlay = document.getElementById("curtainOverlay");
 
-  "motorized-blinds": [
-    "gallery/motorized-blinds/motorized-blinds-Dubai.jpg"
-  ]
-};
-
-let currentGallery = [];
-let currentGalleryIndex = 0;
+  if (overlays[styleName]) {
+    overlay.src = overlays[styleName];
+    overlay.style.display = "block";
+    updateOverlayPosition();
+  }
+}
 
 function openGallery(category) {
   const galleryImage = document.getElementById("galleryImage");
@@ -311,6 +311,9 @@ function openGallery(category) {
     "Showing: " + category + " 1 / " + currentGallery.length;
 }
 
+function nextImage() {
+  if (currentGallery.length < 2) return;
+
   currentGalleryIndex = (currentGalleryIndex + 1) % currentGallery.length;
 
   document.getElementById("galleryImage").src =
@@ -326,8 +329,8 @@ function previousImage() {
   document.getElementById("galleryImage").src =
     currentGallery[currentGalleryIndex];
 }
+</script>
 
-  </script>
 
 </body>
 </html>
