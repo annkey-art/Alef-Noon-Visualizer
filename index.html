@@ -168,6 +168,7 @@
   <button onclick="moveOverlay('right')">➡️ Right</button>
   <button onclick="resizeOverlay('bigger')">➕ Bigger</button>
   <button onclick="resizeOverlay('smaller')">➖ Smaller</button>
+<button onclick="downloadPreview()">⬇️ Download Client Preview</button>
 </div>
     </section>
 
@@ -219,7 +220,75 @@
     </section>
 
   </main>
+function downloadPreview() {
+  const previewImage = document.getElementById("previewImage");
+  const overlay = document.getElementById("curtainOverlay");
+  const previewBox = document.querySelector(".preview-box");
 
+  if (!previewImage.src || previewImage.style.display === "none") {
+    alert("Please upload a customer photo first.");
+    return;
+  }
+
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+
+  // Export using the original uploaded photo resolution.
+  canvas.width = previewImage.naturalWidth;
+  canvas.height = previewImage.naturalHeight;
+
+  // Draw customer photo.
+  ctx.drawImage(
+    previewImage,
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+  // Draw curtain/blind overlay if one is selected.
+  if (overlay.src && overlay.style.display !== "none") {
+    const imageRect = previewImage.getBoundingClientRect();
+    const overlayRect = overlay.getBoundingClientRect();
+
+    const scaleX = canvas.width / imageRect.width;
+    const scaleY = canvas.height / imageRect.height;
+
+    const overlayX = (overlayRect.left - imageRect.left) * scaleX;
+    const overlayY = (overlayRect.top - imageRect.top) * scaleY;
+    const overlayWidth = overlayRect.width * scaleX;
+    const overlayHeight = overlayRect.height * scaleY;
+
+    ctx.drawImage(
+      overlay,
+      overlayX,
+      overlayY,
+      overlayWidth,
+      overlayHeight
+    );
+  }
+
+  canvas.toBlob(
+    function(blob) {
+      if (!blob) {
+        alert("The preview could not be created.");
+        return;
+      }
+
+      const downloadLink = document.createElement("a");
+      downloadLink.href = URL.createObjectURL(blob);
+      downloadLink.download = "alef-noon-client-preview.png";
+
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      downloadLink.remove();
+
+      URL.revokeObjectURL(downloadLink.href);
+    },
+    "image/png",
+    1
+  );
+}
 <script>
 const overlays = {
   "blackout-curtains": "gallery/overlays/blackout-overlay.png",
@@ -329,6 +398,10 @@ function previousImage() {
   document.getElementById("galleryImage").src =
     currentGallery[currentGalleryIndex];
 }
+  <div class="preview-box">
+  <img id="previewImage" alt="Customer room preview" />
+  <img id="curtainOverlay" alt="Selected curtain or blind" />
+</div>
 </script>
 
 
