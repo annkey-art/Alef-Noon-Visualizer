@@ -305,6 +305,8 @@ function nextImage() {
 
   document.getElementById("galleryImage").src =
     currentGallery[currentGalleryIndex];
+  document.getElementById("galleryStatus").textContent =
+  `Showing: ${currentGalleryIndex + 1} / ${currentGallery.length}`;
 }
 
 function previousImage() {
@@ -316,6 +318,8 @@ function previousImage() {
 
   document.getElementById("galleryImage").src =
     currentGallery[currentGalleryIndex];
+  document.getElementById("galleryStatus").textContent =
+  `Showing: ${currentGalleryIndex + 1} / ${currentGallery.length}`;
 }
 
 function downloadPreview() {
