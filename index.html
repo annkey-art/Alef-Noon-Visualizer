@@ -316,8 +316,7 @@ function openGallery(category) {
     return;
   }
 
-  galleryImage.src = currentGallery[currentGalleryIndex];
-  galleryImage.style.display = "block";
+  showGalleryItem(currentGallery[currentGalleryIndex]);
   galleryStatus.innerText =
     "Showing: " + category + " 1 / " + currentGallery.length;
 }
