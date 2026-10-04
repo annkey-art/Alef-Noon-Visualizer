@@ -326,8 +326,7 @@ function nextImage() {
 
   currentGalleryIndex = (currentGalleryIndex + 1) % currentGallery.length;
 
-  document.getElementById("galleryImage").src =
-    currentGallery[currentGalleryIndex];
+  showGalleryItem(currentGallery[currentGalleryIndex]);
   document.getElementById("galleryStatus").textContent =
   `Showing: ${currentGalleryIndex + 1} / ${currentGallery.length}`;
 }
@@ -339,8 +338,7 @@ function previousImage() {
     (currentGalleryIndex - 1 + currentGallery.length) %
     currentGallery.length;
 
-  document.getElementById("galleryImage").src =
-    currentGallery[currentGalleryIndex];
+  showGalleryItem(currentGallery[currentGalleryIndex]);
   document.getElementById("galleryStatus").textContent =
   `Showing: ${currentGalleryIndex + 1} / ${currentGallery.length}`;
 }
