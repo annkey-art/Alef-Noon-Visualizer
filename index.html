@@ -282,7 +282,27 @@ function selectStyle(styleName) {
     updateOverlayPosition();
   }
 }
+function showGalleryItem(file) {
+  const galleryImage = document.getElementById("galleryImage");
+  const galleryVideo = document.getElementById("galleryVideo");
 
+  const isVideo = /\.(mp4|webm|mov)$/i.test(file);
+
+  if (isVideo) {
+    galleryImage.style.display = "none";
+
+    galleryVideo.src = file;
+    galleryVideo.style.display = "block";
+    galleryVideo.load();
+  } else {
+    galleryVideo.pause();
+    galleryVideo.style.display = "none";
+    galleryVideo.removeAttribute("src");
+
+    galleryImage.src = file;
+    galleryImage.style.display = "block";
+  }
+}
 function openGallery(category) {
   const galleryImage = document.getElementById("galleryImage");
   const galleryStatus = document.getElementById("galleryStatus");
