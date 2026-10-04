@@ -3,7 +3,7 @@ const galleries = {
     "gallery/blackout-curtains/blackout-curtains-Dubai-Marina.jpg",
     "gallery/blackout-curtains/pelmet-curtains.webp",
     "gallery/blackout-curtains/pinch-pleat-curtains.webp",
-     "gallery/blackout-curtains/blackout.mp4"
+    "gallery/blackout-curtains/blackout.mp4"
   ],
 
   "roller-blinds": [
