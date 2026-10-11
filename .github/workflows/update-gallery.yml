@@ -1,12 +1,12 @@
 name: Update Gallery
 
-on:
+'on':
   push:
     branches:
       - gallery-upgrade
     paths:
       - 'gallery/**'
-  workflow_dispatch:
+  workflow_dispatch: {}
 
 permissions:
   contents: write
