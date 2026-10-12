@@ -4,6 +4,7 @@ name: Update Gallery
   push:
     branches:
       - gallery-upgrade
+      - main
     paths:
       - 'gallery/**'
   workflow_dispatch: {}
