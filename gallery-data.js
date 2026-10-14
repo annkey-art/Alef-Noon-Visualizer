@@ -1,6 +1,7 @@
 const galleries = {
   "blackout-curtains": [
     "gallery/blackout-curtains/BLACKOUT- CuRTAINSDubai9.jpg",
+    "gallery/blackout-curtains/Blackout-Sheer-Living-Room5.jpg",
     "gallery/blackout-curtains/blackout-curtains-Dubai-Marina.jpg",
     "gallery/blackout-curtains/blackout.mp4",
     "gallery/blackout-curtains/pelmet-curtains.webp",
