@@ -38,6 +38,10 @@ const galleries = {
     "gallery/blackout-curtains/pinch-pleat-curtains.webp"
   ],
   "roller-blinds": [
+    "gallery/roller-blinds/Roller-blind-office.jpg",
+    "gallery/roller-blinds/Roller-blind-office1.jpg",
+    "gallery/roller-blinds/Roller-blinds-office3.jpg",
+    "gallery/roller-blinds/Roller-blinds.jpg",
     "gallery/roller-blinds/roller-blinds-Dubai9.jpg"
   ],
   "roman-blinds": [],
