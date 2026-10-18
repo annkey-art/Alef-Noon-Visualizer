@@ -42,6 +42,9 @@ const galleries = {
   ],
   "roman-blinds": [],
   "sheers": [
+    "gallery/sheers/Sheer-living-room.jpg",
+    "gallery/sheers/Sheers- livingroom1.jpg",
+    "gallery/sheers/Sheers-living-room .jpg",
     "gallery/sheers/sheer-curtains-in-Dubai.jpg"
   ],
   "venetian-blinds": [
