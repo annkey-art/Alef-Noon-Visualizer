@@ -1,8 +1,11 @@
 const galleries = {
   "blackout-curtains": [
     "gallery/blackout-curtains/BLACKOUT- CuRTAINSDubai9.jpg",
+    "gallery/blackout-curtains/Blackout- finish- touch.jpg",
+    "gallery/blackout-curtains/Blackout-Living-Room.jpg",
     "gallery/blackout-curtains/Blackout-Sheer-Bedroom.jpg",
     "gallery/blackout-curtains/Blackout-Sheer-Bedroom1.jpg",
+    "gallery/blackout-curtains/Blackout-Sheer-Bedroom12.jpg",
     "gallery/blackout-curtains/Blackout-Sheer-Bedroom2.jpg",
     "gallery/blackout-curtains/Blackout-Sheer-Bedroom3.jpg",
     "gallery/blackout-curtains/Blackout-Sheer-Bedroom4.jpg",
@@ -10,7 +13,10 @@ const galleries = {
     "gallery/blackout-curtains/Blackout-Sheer-Bedroom6.jpg",
     "gallery/blackout-curtains/Blackout-Sheer-Bedroom7.jpg",
     "gallery/blackout-curtains/Blackout-Sheer-Bedroom8.jpg",
+    "gallery/blackout-curtains/Blackout-Sheer-Living-Room.jpg",
     "gallery/blackout-curtains/Blackout-Sheer-Living-Room1.jpg",
+    "gallery/blackout-curtains/Blackout-Sheer-Living-Room11.jpg",
+    "gallery/blackout-curtains/Blackout-Sheer-Living-Room12.jpg",
     "gallery/blackout-curtains/Blackout-Sheer-Living-Room2.jpg",
     "gallery/blackout-curtains/Blackout-Sheer-Living-Room3.jpg",
     "gallery/blackout-curtains/Blackout-Sheer-Living-Room4.jpg",
