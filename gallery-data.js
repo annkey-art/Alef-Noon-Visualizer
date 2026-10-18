@@ -44,7 +44,10 @@ const galleries = {
     "gallery/roller-blinds/Roller-blinds.jpg",
     "gallery/roller-blinds/roller-blinds-Dubai9.jpg"
   ],
-  "roman-blinds": [],
+  "roman-blinds": [
+    "gallery/roman-blinds/Roman-Blinds-Kitchen.jpg",
+    "gallery/roman-blinds/Roman-blinds.jpg"
+  ],
   "sheers": [
     "gallery/sheers/Sheer-living-room.jpg",
     "gallery/sheers/Sheers- livingroom1.jpg",
